@@ -1,0 +1,9 @@
+import axios from "axios";
+
+const api = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  withCredentials: true, // ✅ VERY IMPORTANT FOR COOKIES
+  // ❌ REMOVE Content-Type header here
+});
+
+export default api;
