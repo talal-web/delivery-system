@@ -1,33 +1,38 @@
 import Link from "next/link";
-import { Truck, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 mt-16">
-      <div className="max-w-7xl mx-auto px-4 py-12 grid gap-8 md:grid-cols-4">
+    <footer className="mt-20 bg-[#01274c] text-[#faf9ff]">
+      <div className="max-w-7xl mx-auto px-4 py-14 grid gap-10 md:grid-cols-4">
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-2 text-white font-bold text-xl mb-4">
-            <Truck />
-            FastExpress
-          </div>
-          <p className="text-sm">
-            Fast and reliable courier service across Pakistan with real-time
-            tracking and affordable pricing.
+          <h2 className="text-2xl font-bold mb-4">
+            penguin<span className="text-[#ffbd42]">mama</span>
+          </h2>
+          <p className="text-sm text-[#faf9ff]/80 leading-relaxed">
+            Fast, safe and reliable delivery service across Pakistan. We ensure
+            your parcels reach on time with complete care and real-time support.
           </p>
         </div>
 
-        {/* Links */}
+        {/* Quick Links */}
         <div>
-          <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+          <h3 className="font-semibold mb-4 text-[#ffbd42]">Quick Links</h3>
           <div className="space-y-2 text-sm">
-            <Link href="/" className="block hover:text-white">
+            <Link href="/" className="block hover:text-[#ffbd42] transition">
               Home
             </Link>
-            <Link href="/services" className="block hover:text-white">
+            <Link
+              href="/services"
+              className="block hover:text-[#ffbd42] transition"
+            >
               Services
             </Link>
-            <Link href="/contact" className="block hover:text-white">
+            <Link
+              href="/contact"
+              className="block hover:text-[#ffbd42] transition"
+            >
               Contact
             </Link>
           </div>
@@ -35,15 +40,15 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <h3 className="text-white font-semibold mb-4">Contact</h3>
-          <div className="space-y-2 text-sm">
-            <p className="flex gap-2">
+          <h3 className="font-semibold mb-4 text-[#ffbd42]">Contact</h3>
+          <div className="space-y-3 text-sm text-[#faf9ff]/90">
+            <p className="flex items-center gap-2">
               <Phone size={16} /> +92 300 0000000
             </p>
-            <p className="flex gap-2">
-              <Mail size={16} /> info@fastexpress.com
+            <p className="flex items-center gap-2">
+              <Mail size={16} /> info@penguinmama.com
             </p>
-            <p className="flex gap-2">
+            <p className="flex items-center gap-2">
               <MapPin size={16} /> Pakistan
             </p>
           </div>
@@ -51,18 +56,19 @@ export default function Footer() {
 
         {/* CTA */}
         <div>
-          <h3 className="text-white font-semibold mb-4">Ready to Ship?</h3>
+          <h3 className="font-semibold mb-4 text-[#ffbd42]">Ready to Ship?</h3>
           <Link
-            href="/public/order"
-            className="inline-block bg-blue-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+            href="/order"
+            className="inline-block bg-[#ffbd42] text-[#01274c] px-6 py-3 rounded-2xl font-semibold hover:scale-105 hover:shadow-lg transition-all duration-300"
           >
-            Order now
+            Place Order
           </Link>
         </div>
       </div>
 
-      <div className="border-t border-gray-800 text-center text-sm py-4">
-        © {new Date().getFullYear()} FastExpress. All rights reserved.
+      {/* Bottom Bar */}
+      <div className="border-t border-[#1c3d66] text-center text-sm py-5 text-[#faf9ff]/70">
+        © {new Date().getFullYear()} PenguinMama. All rights reserved.
       </div>
     </footer>
   );

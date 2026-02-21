@@ -2,11 +2,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
-import Providers from "./providers"; // 👈 import client wrapper
 
 export const metadata: Metadata = {
-  title: "FastExpress Courier",
-  description: "Reliable delivery service across Pakistan",
+  title: {
+    default: "PenguinMama",
+    template: "%s | PenguinMama",
+  },
+  description:
+    "PenguinMama - Fast, Safe & Reliable delivery service across Pakistan.",
+  keywords: ["PenguinMama", "Courier Service", "Delivery Pakistan"],
 };
 
 export default function RootLayout({
@@ -16,12 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900">
-        <Providers>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </Providers>
+      <body className="min-h-screen flex flex-col bg-[#faf9ff] text-[#01274c]">
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

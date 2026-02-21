@@ -3,80 +3,83 @@
 import { motion } from "framer-motion";
 import {
   Truck,
+  ShoppingCart,
   Package,
   Clock,
   ShieldCheck,
   MapPin,
-  Warehouse,
 } from "lucide-react";
 
-const services = [
+type Service = {
+  title: string;
+  description: string;
+  icon: React.ElementType;
+  gradient: string;
+};
+
+const services: Service[] = [
   {
-    title: "Same Day Delivery",
+    title: "Fast Delivery",
     description:
-      "Fast and reliable same-day delivery service within major cities across Pakistan.",
+      "Lightning-fast delivery service ensuring your orders arrive on time.",
     icon: Truck,
+    gradient: "from-blue-500 to-cyan-500",
   },
   {
-    title: "Parcel Delivery",
+    title: "Shopping Delivery",
     description:
-      "Secure parcel delivery for documents, packages, and business shipments nationwide.",
+      "We shop and deliver groceries, food, and daily essentials for you.",
+    icon: ShoppingCart,
+    gradient: "from-emerald-500 to-teal-500",
+  },
+  {
+    title: "Parcel Service",
+    description:
+      "Secure parcel handling with real-time tracking and safe delivery.",
     icon: Package,
+    gradient: "from-purple-500 to-pink-500",
   },
   {
-    title: "Express Shipping",
+    title: "On-Time Guarantee",
     description:
-      "Urgent shipments delivered with priority handling and fastest routes.",
+      "We respect your time with our highly reliable delivery schedule.",
     icon: Clock,
+    gradient: "from-orange-500 to-red-500",
   },
   {
     title: "Secure Handling",
-    description:
-      "Your parcels are protected with professional packaging and safe handling.",
+    description: "Your packages are handled with maximum care and protection.",
     icon: ShieldCheck,
+    gradient: "from-indigo-500 to-blue-500",
   },
   {
-    title: "Nationwide Coverage",
-    description: "We deliver to major cities and remote areas across Pakistan.",
+    title: "Live Tracking",
+    description: "Track your delivery in real-time from pickup to doorstep.",
     icon: MapPin,
-  },
-  {
-    title: "Warehousing",
-    description:
-      "Smart storage and inventory solutions for growing businesses.",
-    icon: Warehouse,
+    gradient: "from-pink-500 to-rose-500",
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="bg-gray-50">
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-linear-to-br from-blue-600 to-indigo-700 text-white">
-        <div className="mx-auto max-w-7xl px-6 py-20 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl font-bold md:text-5xl"
-          >
-            Our Courier Services
-          </motion.h1>
+    <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 px-4 py-14">
+      <div className="mx-auto max-w-7xl">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-14"
+        >
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Our Services
+          </h1>
+          <p className="mt-3 text-gray-600 max-w-2xl mx-auto">
+            We provide reliable, fast, and secure delivery solutions tailored to
+            your needs.
+          </p>
+        </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.6 }}
-            className="mx-auto mt-4 max-w-2xl text-lg text-blue-100"
-          >
-            FastExpress Courier provides reliable, fast, and secure delivery
-            solutions tailored for individuals and businesses across Pakistan.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* SERVICES GRID */}
-      <section className="mx-auto max-w-7xl px-6 py-16">
+        {/* Services Grid */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => {
             const Icon = service.icon;
@@ -85,51 +88,36 @@ export default function ServicesPage() {
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
                 whileHover={{ y: -6 }}
-                className="group rounded-2xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-xl"
+                className="group"
               >
-                <div className="mb-4 inline-flex rounded-xl bg-blue-100 p-3 text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
-                  <Icon size={26} />
+                <div className="h-full rounded-2xl bg-white p-6 shadow-md border border-gray-100 transition-all duration-300 hover:shadow-xl">
+                  {/* Icon */}
+                  <div
+                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center text-white mb-5`}
+                  >
+                    <Icon size={26} />
+                  </div>
+
+                  {/* Content */}
+                  <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition">
+                    {service.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm text-gray-600 leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  {/* Hover line */}
+                  <div className="mt-5 h-1 w-0 bg-blue-600 rounded-full transition-all duration-300 group-hover:w-16" />
                 </div>
-
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {service.title}
-                </h3>
-
-                <p className="mt-2 text-gray-600">{service.description}</p>
-
-                <div className="mt-4 h-1 w-0 bg-blue-600 transition-all duration-300 group-hover:w-16" />
               </motion.div>
             );
           })}
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-linear-to-r from-indigo-600 to-blue-600">
-        <div className="mx-auto max-w-7xl px-6 py-16 text-center text-white">
-          <h2 className="text-3xl font-bold md:text-4xl">
-            Ready to Ship Your Parcel?
-          </h2>
-
-          <p className="mx-auto mt-4 max-w-2xl text-blue-100">
-            Book your delivery today with FastExpress Courier and experience
-            fast, secure, and affordable shipping.
-          </p>
-
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="public/order"
-            className="mt-8 inline-block rounded-xl bg-white px-8 py-3 font-semibold text-blue-700 shadow-lg transition hover:bg-gray-100"
-          >
-            Place an Order
-          </motion.a>
-        </div>
-      </section>
-    </div>
+      </div>
+    </main>
   );
 }
